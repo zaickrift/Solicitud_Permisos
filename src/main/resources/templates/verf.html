@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+  <meta charset="utf-8">
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<br>
+<div class="container py-4">
+  <div class="card bg-light">
+    <div class="card-header" th:text="${titulo}">
+    </div>
+    <div class="card-body">
+      <ul class="list-group">
+        <li class="list-group-item active" th:text="${funcionario.id_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.nombres_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.apellidos_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.rut_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.cargo_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.grado_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.dependencia_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.fecha_nac_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.email_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.pass_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.saldoHoras_f}"></li>
+        <li class="list-group-item" th:text="${funcionario.estadoFun_f}"></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="layout/layout :: head">
+<meta charset="utf-8">
+</head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="py-4 ml-5 mr-5">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a th:href="@{/formf}" class="btn btn-primary">Agregar Funcionario</a>
+
+					<a sec:authorize="hasRole('ADMIN')" th:href="@{/exportarPDF}"
+						class="btn btn-secondary">Exportar a PDF</a> <a
+						sec:authorize="hasRole('ADMIN')" th:href="@{/exportarExcel}"
+						class="btn btn-success">Exportar a Excel</a>
+				</h4>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Rut</th>
+							<th>Cargo</th>
+							<th>Grado</th>
+							<th>Dependencia</th>
+							<th>Fecha de Nacimiento</th>
+							<th>Email</th>
+							<th>Pass</th>
+							<th>Saldo de Horas</th>
+							<th>Estado Funcionario</th>
+							<th sec:authorize="hasRole('ADMIN')">Editar</th>
+							<th sec:authorize="hasRole('ADMIN')">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+					<tr th:each="funcionario : ${funcionarios}">
+						<td th:text="${funcionario.id_f}"></td>
+						<td th:text="${funcionario.nombres_f}"></td>
+						<td th:text="${funcionario.apellidos_f}"></td>
+						<td th:text="${funcionario.rut_f}"></td>
+						<td th:text="${funcionario.cargo_f}"></td>
+						<td th:text="${funcionario.grado_f}"></td>
+						<td th:text="${funcionario.dependencia_f}"></td>
+						<td th:text="${funcionario.fecha_nac_f}"></td>
+						<td th:text="${funcionario.email_f}"></td>
+						<td th:text="${funcionario.pass_f}"></td>
+						<td th:text="${funcionario.saldoHoras_f}"></td>
+						<td th:text="${funcionario.estadoFun_f}"></td>
+						<td><a class="btn btn-info btn-sm"
+							   th:href="@{/verf/} + ${funcionario.id_f}">Detalles</a></td>
+						<td sec:authorize="hasRole('ADMIN')"><a
+								class="btn btn-warning btn-sm"
+								th:href="@{/formf/} + ${funcionario.id_f}">Editar</a></td>
+						<td sec:authorize="hasRole('ADMIN')"><a
+								class="btn btn-danger btn-sm"
+								th:href="@{/eliminarf/} + ${funcionario.id_f}"
+								onclick="return confirm('¿Estás seguro de eliminar al funcionario?');">Eliminar</a></td>
+					</tr>
+					</tbody>
+				</table>
+				<nav th:replace="paginator-nav :: paginator"></nav>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

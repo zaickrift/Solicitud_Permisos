@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+  <meta charset="utf-8">
+</head>
+<body>
+
+<header th:replace="layout/layout :: header"></header>
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+      <h1 class="text-center" th:text="${titulo}"></h1>
+      <div class="card-body">
+        <form th:action="@{/formf}" th:object="${funcionario}" method="post">
+          <input type="hidden" th:field="*{id_f}" th:value="${funcionario.id_f}"/>
+          <div class="form-group">
+            <label>Nombres : </label>
+            <input type="text" th:field="*{nombres_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('nombres_f')}" th:errors="*{nombres_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Apellido : </label>
+            <input type="text" th:field="*{apellidos_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('apellidos_f')}" th:errors="*{apellidos_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Rut : </label>
+            <input type="text" th:field="*{rut_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('rut_f')}" th:errors="*{rut_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Cargo : </label>
+            <input type="text" th:field="*{cargo_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('cargo_f')}" th:errors="*{cargo_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Grado : </label>
+            <input type="text" th:field="*{grado_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('grado_f')}" th:errors="*{grado_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Dependencia : </label>
+            <input type="text" th:field="*{dependencia_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('dependencia_f')}" th:errors="*{dependencia_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Fecha de Nacimiento : </label>
+            <input type="date" th:field="*{fecha_nac_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('fecha_nac_f')}" th:errors="*{fecha_nac_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Email : </label>
+            <input type="email" th:field="*{email_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('email_f')}" th:errors="*{email_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Password : </label>
+            <input type="text" th:field="*{pass_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('pass_f')}" th:errors="*{pass_f}"></small>
+          </div>
+          <div class="form-group">
+            <label>Saldo de Horas : </label>
+            <input type="text" th:field="*{saldoHoras_f}" class="form-control" th:errorclass="'form-control alert-danger'"/>
+            <small class="form-text text-danger" th:if="${#fields.hasErrors('saldoHoras_f')}" th:errors="*{saldoHoras_f}"></small>
+          </div>
+          <div class="box-footer">
+            <input type="submit" value="Guardar" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
